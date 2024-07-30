@@ -55,4 +55,53 @@ Cypress.Commands.add('POST_cadastrarProduto', (body, token) => {
           })
         
         })
+
+        Cypress.Commands.add('DELETE_excluirProduto', (id, token) => {
+          cy.request({
+            method: 'DELETE',
+            url: `http://localhost:3000/produtos/${id}`,
+            headers: {
+                authorization: token
+            },
+            failOnStatusCode: false
+              }).then(response =>{
+                return response
+
+              })
+            })
+
+            Cypress.Commands.add('POST_adicionarProdutoAoCarrinho', (id, token) => {
+              cy.request({
+                method: 'POST',
+                url: `http://localhost:3000/carrinhos`,
+                body: {
+                  "produtos": [
+                    {
+                      "idProduto": id,
+                      "quantidade": 1
+                    }
+                    
+                  ]
+                },
+                headers: {
+                    authorization: token
+                },
+                failOnStatusCode: false
+                  }).then(response =>{
+                    return response
     
+                  })
+                })
+                Cypress.Commands.add('limparCarrinho', (token) => {
+                  cy.request({
+                    method: 'DELETE',
+                    url: `http://localhost:3000/carrinhos/cancelar-compra`,
+                    headers: {
+                        authorization: token
+                    },
+                    failOnStatusCode: false
+                      }).then(response =>{
+                        return response
+        
+                      })
+                    })
