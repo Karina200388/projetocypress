@@ -19,7 +19,7 @@ describe('Validação de edição de produtos', () => {
             })
     });
 
-    it('Validar edição de produto com suceesso', () => {
+    it('Validar edição de produto com sucesso', () => {
         cy.POST_cadastrarProduto(body, token)
             .then(response => {
                 id = response.body._id
