@@ -43,7 +43,7 @@ describe('Validar exclusão de produtos', () => {
 
             })
     });
-    it('Não deve permitir excluir produto adicionado à algum carrinho', () => {
+    it('Não deve permitir excluir produto adicionado a algum carrinho', () => {
         cy.POST_cadastrarProduto(body, token)
             .then(response => {
                 id = response.body._id
